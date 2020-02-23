@@ -36,7 +36,7 @@ export const TravelTable = (props) => {
   const [page, setPage] = useState(0);
 
   useEffect(() => {
-    if (plans.size % rowsPerPage === 0 && plans.size / rowsPerPage <= page) {
+    if (plans.size > 0 && plans.size % rowsPerPage === 0 && plans.size / rowsPerPage <= page) {
       setPage(page - 1);
     }
   }, [plans]);
@@ -50,7 +50,7 @@ export const TravelTable = (props) => {
       description: 'This will be permanently deleted'
     }).then(() => {
       deletePlan(id);
-    });      
+    });
   };
 
   const handleChangePage = (event, newPage) => {
